@@ -1,12 +1,11 @@
 #ifndef ARMES_H_INCLUDED
 #define ARMES_H_INCLUDED
 
-class armes{
+class arme{
 public:
-    virtual ~armes()=default;
-    virtual void utiliser() const =0;
-    virtual void recupererPoint() const =0;
-
+    armes(double pointSolidite);
+    double pointsSolidite() const;
+private:
+    double d_pointsSoldite;
 };
-
 #endif // ARMES_H_INCLUDED

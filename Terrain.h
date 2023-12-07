@@ -3,6 +3,7 @@
 class terrain
 {
 
+public:
 };
 
 #endif // TERRAIN_H_INCLUDED
