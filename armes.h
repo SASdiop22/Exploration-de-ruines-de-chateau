@@ -4,8 +4,9 @@
 class armes{
 public:
     armes(double point);
-    double solidite() const;
-    void Pointsolidite(double point);
+    double points_de_solidite() const;
+    void gain_de_pointSolidite(double point);
+    void perte_de_pointSolidite(double point);
 private:
     double d_pointSolidite;
 };
