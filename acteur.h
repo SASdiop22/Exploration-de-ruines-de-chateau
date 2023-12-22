@@ -15,10 +15,10 @@ class acteur
 public:
     virtual ~acteur()= default;
     acteur(double pointVie, double pointForce, point position );
-     double pointDevie()const;
-     void ChangePointDeVie(double pVie) ;
-     void ChangePointDeForce(double pForce);
-     double pointDeforce()const;
+    double pointDevie()const;
+    void ChangePointDeVie(double pVie) ;
+    void ChangePointDeForce(double pForce);
+    double pointDeforce()const;
     bool estMort() const;
     virtual double ForceDAttaque() const =0;
     virtual void attaque(acteur& act)=0;
