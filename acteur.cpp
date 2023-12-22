@@ -6,6 +6,10 @@ double acteur::pointDevie()const
 {
     return d_pvie;
 }
+point acteur::position() const
+{
+    return d_position;
+}
 void acteur::ChangePointDeVie(double pVie)
 {
     d_pvie= pVie;

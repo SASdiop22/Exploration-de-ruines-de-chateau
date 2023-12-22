@@ -1,7 +1,7 @@
 #ifndef MONSTRE_H_INCLUDED
 #define MONSTRE_H_INCLUDED
 
-
+#include <memory>
 #include "point.h"
 #include "acteur.h"
 #include "aventurier.h"
@@ -12,7 +12,7 @@ public:
     monstre(double pointVie,double pointForce, point position,  double habilite );
     double habilite() const ;
     double  ForceDAttaque() const override;
-    void  attaque(acteur& act) override;
+    void  attaque(aventurier& A);
     char symbole() const override;
 private:
     double d_habilite;

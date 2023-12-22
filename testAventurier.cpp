@@ -17,10 +17,12 @@ TEST_CASE("Un aventurier fonctionne correctement")
         {
             armes epee{100};
             armes armure{100};
-            point position{10.0,10.0};
-            aventurier A{200,500,position,epee,armure};
+            point p{10.0,10.0};
+            aventurier A{200,500,p,epee,armure};
             REQUIRE_EQ(A.pointDevie(), 200);
             REQUIRE_EQ(A.pointDeforce(), 500);
+            REQUIRE_EQ(A.position().x(),p.x());
+            REQUIRE_EQ(A.position().y(),p.y());
         }
     }
     SUBCASE("Les methodes de l'aventurier sont correctes")
@@ -46,7 +48,7 @@ TEST_CASE("Un aventurier fonctionne correctement")
         }
         SUBCASE("Pour une attaque")
         {
-            SUBCASE("L'aventurier subit les deja d'un attaque")
+            SUBCASE("L'epee de l'aventurier subit les degats de son attaque")
             {
                 armes epee{100.0};
                 armes armure{120.0};
