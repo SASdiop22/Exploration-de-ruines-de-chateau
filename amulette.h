@@ -5,13 +5,11 @@
 
 class amulette{
 public:
-    amulette(const point& p, const char& symbole);
+    amulette(const point& p);
     point position_amulette() const;
     char symbole() const;
 private:
     point d_position;
-    char d_symbole;
-
 };
 
 
