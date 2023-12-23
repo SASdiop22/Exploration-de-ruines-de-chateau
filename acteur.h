@@ -23,6 +23,8 @@ public:
     virtual double ForceDAttaque() const =0;
     virtual void attaque(acteur& act)=0;
     virtual char symbole() const=0;
+    point position() const;
+
 private:
     double d_pvie, d_pforce;
     point d_position;

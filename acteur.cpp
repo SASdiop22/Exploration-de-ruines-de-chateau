@@ -23,3 +23,9 @@ bool acteur::estMort() const
 {
     return d_pvie==0.0 ;
 }
+
+ point acteur::position() const
+ {
+     return d_position;
+
+ }
