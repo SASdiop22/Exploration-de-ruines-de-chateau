@@ -37,7 +37,7 @@ void  aventurier::attaque(acteur& act)
 
 char aventurier::symbole() const
 {
-    return 'A';
+    return 1;
 }
 
 
