@@ -10,6 +10,16 @@ std::vector<std::vector<char>> terrain::tableau() const
     return d_tableau;
 
 }
+terrain::terrain(int largeur,int hauteur)
+{
+    d_tableau.resize(hauteur);
+    for (int i = 0; i < hauteur; i++)
+    {
+        d_tableau[i].resize(largeur);
+
+    }
+
+}
 int terrain::largeur() const
 {
     return d_tableau.size();
@@ -29,10 +39,20 @@ void terrain::attribuerMurTerrain()
         d_tableau[largeur() - 1][i] = 'x';
     }
 
-    for (int j = 0; j < largeur(); j++)
+    for (int j = 0; j < hauteur(); j++)
+
     {
-        d_tableau[j][0] = 'x';
-        d_tableau[j][hauteur() - 1] = 'x';
+        if(j != 1)
+        {
+            d_tableau[j][0] = 'x';
+
+        }
+        if(j != hauteur()-2)
+        {
+            d_tableau[j][hauteur() - 1] = 'x';
+
+        }
     }
+
 
 }

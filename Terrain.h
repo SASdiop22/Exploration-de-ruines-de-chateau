@@ -6,6 +6,7 @@ class terrain
 
 public:
     terrain(const std::vector<std::vector<char>>& tableau);
+    terrain(int largeur,int hauteur);
     int largeur() const;
     int hauteur() const;
     std::vector<std::vector<char>> tableau() const;
