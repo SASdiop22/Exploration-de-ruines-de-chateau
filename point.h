@@ -3,11 +3,15 @@
 
 class point{
 public:
-    point(double x, double y);
-    double x()const;
-    double y() const;
+    point(int x, int y);
+    int x() const;
+    int y() const;
+    void setx(int x);
+    void sety(int y);
+friend bool operator==(const point& p1,const point& p2);
 private:
-    double d_x, d_y;
+    int d_x;
+    int d_y;
 };
 
 
