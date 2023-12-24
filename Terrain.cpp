@@ -75,7 +75,7 @@ void terrain::attribuerMurTerrain()
 
         }
     }
-    for(int i = 1; i< hauteur()-1; i+=2)
+    for(int i = 2; i< hauteur()-1; i+=2)
 
     {
          std::vector<int>setOfRandomValue;
@@ -92,16 +92,22 @@ void terrain::attribuerMurTerrain()
             if(isAmongValue(setOfRandomValue,randomValue)== false)
             {
 
-                setOfRandomValue.push_back(randomValue);
-                 d_tableau[randomValue][i] =  '#';
+                if(randomValue== largeur()-2 && i == hauteur()-2)
+                {
+                      d_tableau[randomValue][i] =  ' ';
+                }
+                else
+                {
+                    setOfRandomValue.push_back(randomValue);
+                  d_tableau[randomValue][i] =  '#';
+
+                }
+
             }
 
         }
-        cout<<"dans la boucle for"<<endl;
-
 
     }
-    cout<<"Hors"<<endl;
 
 
 }
