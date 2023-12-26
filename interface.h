@@ -4,6 +4,8 @@
 #include"Terrain.h"
 #include"aventurier.h"
 #include"monstre.h"
+#include"deplacement.h"
+
 class interface{
 public :
 virtual ~interface() = default;
@@ -14,7 +16,11 @@ class interfaceConsole : public interface
 {
     public:
     void initialiserTerrain( terrain &terrain) const override ;
-    void initialiserActeur(terrain& terrain,aventurier& aventurier,std::unique_ptr<monstre> monstres) const;
+   void initialiserActeur(terrain& terrain,aventurier& aventurier) const;
+ // void MenuDeplaceAventurier(string choix, deplacement d);
+   void MenuPrincipal();
+   // deplacement d;
+
 
 };
 

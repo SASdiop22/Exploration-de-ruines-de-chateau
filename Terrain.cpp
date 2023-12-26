@@ -101,7 +101,7 @@ void terrain::attribuerMurTerrain()
             if(isAmongValue(PoistionsOccupees,randomValue)== false)
             {
 
-                if(randomValue== largeur()-2 && i == hauteur()-2)
+                if((randomValue== largeur()-2 && i == hauteur()-2) )
                 {
                     d_tableau[randomValue][i] =  ' ';
                 }
@@ -122,30 +122,33 @@ void terrain::attribuerMurTerrain()
 }
 void terrain::initialiserActeur(aventurier& aventurier,std::vector<std::unique_ptr<monstre>>& monstres)
 {
+
     d_tableau[aventurier.position().x()][aventurier.position().y()] = aventurier.symbole();
-   // std::vector<std::pair<int, int>> posOccupees;
+    int i = 0;
+    cout<<monstres.size()<<endl;;
 
-    int monstersPlaced = 0;
-
-    while (monstersPlaced < monstres.size())
+    while (i < monstres.size())
 {
     int randomValueLigne, randomValueColonne;
 
-    do
+    randomValueLigne = (std::rand() % (largeur() - 2)) + 2;
+    randomValueColonne = (std::rand() % (hauteur() - 2)) + 2;
+    cout << "in " << "rl " << randomValueLigne << "rc " << randomValueColonne << endl;
+    if (d_tableau[randomValueLigne][randomValueColonne] == '\0')
     {
-        randomValueLigne = (std::rand() % (largeur() - 2)) + 2;
-        randomValueColonne = (std::rand() % (hauteur() - 2)) + 2;
-        cout << "in " << "rl " << randomValueLigne << "rc " << randomValueColonne << endl;
+        d_tableau[randomValueLigne][randomValueColonne] = monstres[i]->symbole();
+        monstres[i]->position().setx(randomValueLigne);
+        monstres[i]->position().sety(randomValueColonne);
+        i++;
     }
-    while (d_tableau[randomValueLigne][randomValueColonne] == '#' ||
-           d_tableau[randomValueLigne][randomValueColonne] == 'M' ||
-           d_tableau[randomValueLigne][randomValueColonne] == 'x' );
+    cout<<"valeurs places"<<i<<endl;
 
-    d_tableau[randomValueLigne][randomValueColonne] = monstres[monstersPlaced]->symbole();
-   // posOccupees.emplace_back(randomValueLigne, randomValueColonne);
-    monstersPlaced++;
-    cout << "Hors " << "rl " << randomValueLigne << "rc " << randomValueColonne << endl;
+
+
+
 }
+
+
 
 
 }

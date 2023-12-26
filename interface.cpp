@@ -2,6 +2,12 @@
  #include<iostream>
 using std::cout;
 using std::endl;
+//
+//void gotoxy(int x, int y){
+//	CursorPosition.X = x;
+//	CursorPosition.Y = y;
+//	SetConsoleCursorPosition(console, CursorPosition);
+//}
 
  void interfaceConsole::initialiserTerrain( terrain &terrain) const{
 
@@ -45,18 +51,35 @@ using std::endl;
         }
         else
         {
-            cout << ' ' << endl; // Adjust the spacing for the second-to-last row
+            cout << ' ' << endl;
         }
 
-        // Print the bottom border
+
         for (int j = 0; j < terrain.hauteur(); j++)
         {
             cout << "+-----";
         }
         cout << '+' << endl;
     }
+
  }
-void interfaceConsole::initialiserActeur(terrain& terrain,aventurier& aventurier,std::unique_ptr<monstre> monstres) const
-{
-    cout<<aventurier.symbole();
-}
+
+
+   void interfaceConsole::MenuPrincipal()
+   {
+//       gotoxy(10,5);cout<<"----------------------------------------------"<<endl;
+//       gotoxy(10,6)cout<<"|      EXPLORATION  DE RUINES DE CHATEAU      |"<<endl;
+//       gotoxy(10,5)cout<<"----------------------------------------------"<<endl;
+//       gotoxy(10,5)cout<<"1. DEMARRER LE JEU "<<endl;
+//      gotoxy(10,5) cout<<" 2. TUTORIEL        "<<endl;
+//       gotoxy(10,5)cout<<" 3. TUTORIEL        "<<endl;
+//       cout<<" 4. QUITTER LE JEU        "<<endl;
+
+
+
+   }
+//void interfaceConsole::initialiserActeur(terrain& terrain,aventurier& aventurier) const
+//{
+//
+//
+//}
