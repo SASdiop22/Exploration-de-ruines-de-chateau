@@ -23,6 +23,18 @@ bool isAmongValue(std::vector<int>setOfRandomValue, int randomValue)
     }
     return false;
 }
+
+bool isAmongValue(const std::vector<std::pair<int, int>>& occupiedPositions, int randomValueLigne, int randomValueColonne)
+{
+    for (const auto& position : occupiedPositions)
+    {
+        if (position.first == randomValueLigne && position.second == randomValueColonne)
+        {
+            return true;
+        }
+    }
+    return false;
+}
 terrain::terrain(const std::vector<std::vector<char>>& tableau):d_tableau{tableau}
 {
 
@@ -78,28 +90,25 @@ void terrain::attribuerMurTerrain()
     for(int i = 2; i< hauteur()-1; i+=2)
 
     {
-         std::vector<int>setOfRandomValue;
-        setOfRandomValue.push_back(0);
+        std::vector<int>PoistionsOccupees;
+        PoistionsOccupees.push_back(0);
         int caseInacessible =  static_cast<int>(hauteur()/2);
-        cout<<'c'<<caseInacessible<<endl;
 
-
-
-        while( setOfRandomValue.size()!= (caseInacessible+1))
+        while( PoistionsOccupees.size()!= (caseInacessible+1))
         {
             int randomValue = (std::rand() % (hauteur() - 2)) + 1;
 
-            if(isAmongValue(setOfRandomValue,randomValue)== false)
+            if(isAmongValue(PoistionsOccupees,randomValue)== false)
             {
 
                 if(randomValue== largeur()-2 && i == hauteur()-2)
                 {
-                      d_tableau[randomValue][i] =  ' ';
+                    d_tableau[randomValue][i] =  ' ';
                 }
                 else
                 {
-                    setOfRandomValue.push_back(randomValue);
-                  d_tableau[randomValue][i] =  '#';
+                    PoistionsOccupees.push_back(randomValue);
+                    d_tableau[randomValue][i] =  '#';
 
                 }
 
@@ -114,19 +123,32 @@ void terrain::attribuerMurTerrain()
 void terrain::initialiserActeur(aventurier& aventurier,std::vector<std::unique_ptr<monstre>>& monstres)
 {
     d_tableau[aventurier.position().x()][aventurier.position().y()] = aventurier.symbole();
+   // std::vector<std::pair<int, int>> posOccupees;
 
-    for(auto &m: monstres)
+    int monstersPlaced = 0;
+
+    while (monstersPlaced < monstres.size())
+{
+    int randomValueLigne, randomValueColonne;
+
+    do
     {
-        int randomValueLigne = (std::rand() % (largeur() - 2)) + 1;
-        cout<<randomValueLigne;
-        int randomValueColonne = (std::rand() % (hauteur() - 2)) + 1;
-        cout<<randomValueColonne;
-        if(d_tableau[randomValueLigne][randomValueColonne] != '#')
-        {
-           d_tableau[randomValueLigne][randomValueColonne] = m->symbole();
-        }
-
-
+        randomValueLigne = (std::rand() % (largeur() - 2)) + 2;
+        randomValueColonne = (std::rand() % (hauteur() - 2)) + 2;
+        cout << "in " << "rl " << randomValueLigne << "rc " << randomValueColonne << endl;
     }
+    while (d_tableau[randomValueLigne][randomValueColonne] == '#' ||
+           d_tableau[randomValueLigne][randomValueColonne] == 'M' ||
+           d_tableau[randomValueLigne][randomValueColonne] == 'x' );
+
+    d_tableau[randomValueLigne][randomValueColonne] = monstres[monstersPlaced]->symbole();
+   // posOccupees.emplace_back(randomValueLigne, randomValueColonne);
+    monstersPlaced++;
+    cout << "Hors " << "rl " << randomValueLigne << "rc " << randomValueColonne << endl;
+}
+
 
 }
+
+
+
