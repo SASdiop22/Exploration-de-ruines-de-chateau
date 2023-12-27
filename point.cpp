@@ -1,8 +1,7 @@
-#include "points.h"
+#include "point.h"
 #include <string>
 #include <math.h>
-#include "../graphics.h"
-#include "../transfoAffine/transfoAffine.h"
+
 using namespace std;
 point::point(double x, double y) : d_x{x} , d_y{y}
 {

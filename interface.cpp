@@ -1,7 +1,9 @@
- #include"interface.h"
- #include<iostream>
+#include"interface.h"
+#include<iostream>
+#include "game.h"
 using std::cout;
 using std::endl;
+
 //
 //void gotoxy(int x, int y){
 //	CursorPosition.X = x;
@@ -9,19 +11,38 @@ using std::endl;
 //	SetConsoleCursorPosition(console, CursorPosition);
 //}
 
- void interfaceConsole::initialiserTerrain( terrain &terrain) const{
+ void interfaceConsole::afficheTerrain() const{
+     /** Creation du jeu(Game):
+        * Creer le terrain par defaut 15x20
+        *Creer les monstres et l'ajouter à Game
+        *Creer de l'aventurier et l'ajouter à Game
+        *Remplir le terrain
+    **/
+    game G{};
 
-    terrain.attribuerMurTerrain();
-    for (int i = 0; i < terrain.hauteur(); i++)
+    std::unique_ptr<aventurier> a = std::make_unique<aventurier>();
+    std::unique_ptr<monstre> m1 = std::make_unique<monstre>();
+    std::unique_ptr<monstre> m2 =std::make_unique<monstre>();
+    std::unique_ptr<monstre> m3 = std::make_unique<monstre>();
+    G.ajoute(std::move(a));
+    G.ajoute(std::move(m1));
+    G.ajoute(std::move(m2));
+    G.ajoute(std::move(m3));
+
+    G.remplirTerrain();
+
+    terrain  TGame= G.terrainGame();
+
+    for (int i = 0; i < TGame.hauteur(); i++)
     {
 
         cout << "+-----";
 
     }
     cout << '+' << endl;
-    for (int i = 0; i < terrain.largeur(); i++)
+    for (int i = 0; i < TGame.largeur(); i++)
     {
-        for (int j = 0; j < terrain.hauteur(); j++)
+        for (int j = 0; j < TGame.hauteur(); j++)
         {
 
 
@@ -34,9 +55,14 @@ using std::endl;
                 cout << ' ';
             }
 
-            if (terrain.tableau()[i][j] != ' ')
+            if (TGame.tableau()[i][j] != ' ')
             {
-                cout << "  " << terrain.tableau()[i][j] << "  ";
+//                if(TGame.tableau()[i][j] == 'M')
+//                {
+//                    cout << "  " << "\x1B[31m" << TGame.tableau()[i][j] << "\x1B[0m" << "  ";
+//                }
+//                else
+                    cout << "  " << TGame.tableau()[i][j] << "  ";
             }
             else
             {
@@ -45,7 +71,7 @@ using std::endl;
         }
 
 
-        if (i != terrain.largeur() - 2)
+        if (i != TGame.largeur() - 2)
         {
             cout << '|' << endl;
         }
@@ -55,7 +81,7 @@ using std::endl;
         }
 
 
-        for (int j = 0; j < terrain.hauteur(); j++)
+        for (int j = 0; j < TGame.hauteur(); j++)
         {
             cout << "+-----";
         }

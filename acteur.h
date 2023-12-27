@@ -21,10 +21,10 @@ public:
      double pointDeforce()const;
     bool estMort() const;
     virtual double ForceDAttaque() const =0;
-    virtual void attaque(acteur& act)=0;
+    //virtual void attaque(acteur& act)=0;
     virtual char symbole() const=0;
     point position() const;
-
+    void changePosition(double x, double y);
 private:
     double d_pvie, d_pforce;
     point d_position;

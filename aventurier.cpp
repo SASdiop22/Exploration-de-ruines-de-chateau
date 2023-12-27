@@ -26,13 +26,13 @@ void aventurier::Quand_Aventurier_Tue_Monstre(acteur& Monstre)
     aventurier::ChangePointDeVie(pv);
 }
 
-void  aventurier::attaque(acteur& act)
+void  aventurier::attaque(std::unique_ptr<monstre>& M)
 {
     double f= aventurier::ForceDAttaque();
     d_Epee.perte_de_pointSolidite(1);
-    double p {pointDevie()};
+    double p = M->pointDevie();
     p-=f;
-    ChangePointDeVie(p);
+    M->ChangePointDeVie(p);
 }
 
 char aventurier::symbole() const

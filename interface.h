@@ -9,14 +9,13 @@
 class interface{
 public :
 virtual ~interface() = default;
-    virtual void initialiserTerrain( terrain &terrain) const = 0;
+    virtual void afficheTerrain() const = 0;
 };
 
 class interfaceConsole : public interface
 {
     public:
-    void initialiserTerrain( terrain &terrain) const override ;
-   void initialiserActeur(terrain& terrain,aventurier& aventurier) const;
+    void afficheTerrain() const override ;
  // void MenuDeplaceAventurier(string choix, deplacement d);
    void MenuPrincipal();
    // deplacement d;

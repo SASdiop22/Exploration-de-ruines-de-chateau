@@ -2,7 +2,10 @@
 game::game(): d_aventurier{}, d_monstres{}, d_terrain{}
 {
 }
-
+terrain game::terrainGame() const
+{
+    return d_terrain;
+}
 
 void game::ajoute(std::unique_ptr<aventurier> A)
 {
@@ -15,44 +18,41 @@ void game::ajoute(std::unique_ptr<monstre> M)
     d_monstres.push_back(std::move(M));
 }
 
-
-void game::remplirTerrain(int l, int h)
+void game::ajoute(terrain T)
 {
-    d_terrain = terrain(l,h);
+    d_terrain = T;
+}
+void game::remplirTerrain()
+{
     d_terrain.attribuerMurTerrain();
     d_terrain.initialiserActeur(d_aventurier,d_monstres);
 }
 
 
-void game::combat()
+void game::combat(std::unique_ptr<aventurier>& A, std::unique_ptr<monstre>& M)
 {
-    //if(d_monstres[0]->position() == d_aventurier->position())
-    //{
-        while(bool tour = true)
+    while(bool tour = true)
+    {
+        M->attaque(A);
+        if(A->estMort())
         {
-            d_monstres[0]->attaque(d_aventurier);
-            if(d_aventurier->estMort())
+            tour = false;
+        }
+        else
+        {
+            A->attaque(M);
+            if(M->estMort())
             {
+                int i {0};
+                while(i < d_monstres.size() && d_monstres[i] != M)
+                {
+                    i++;
+                }
+                d_monstres.erase(d_monstres.begin()+i);
                 tour = false;
             }
-            else
-            {
-                d_aventurier->attaque(d_monstres[0]);
-                if(d_monstres[0]->estMort())
-                    d_monstres
-                    tour = false;
-            }
         }
-    //}
+    }
 }
 
-void game::deplaceAventurier(string choix)
-{
-    deplacement d{};
-    switch choix:
-    case "R":
-        d.deplaceR(d_aventurier);
-    case "L":
-        d
 
-}

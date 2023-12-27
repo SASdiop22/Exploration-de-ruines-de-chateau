@@ -26,17 +26,16 @@ char monstre::symbole() const
 
 
 
-void monstre:: attaque(acteur& act)
+void monstre:: attaque(std::unique_ptr<aventurier>& A)
 {
     double f{ monstre::ForceDAttaque()};
    //aventurier perd (1/4)*f de ses points de vie
-    aventurier* aventurierCible = static_cast<aventurier*>(&act);
-      double PVieAventurier= aventurierCible->pointDevie();
+   // aventurier* aventurierCible = static_cast<aventurier*>(&act);
+      double PVieAventurier= A->pointDevie();
        PVieAventurier-= f/4;
-       aventurierCible->ChangePointDeVie(PVieAventurier);
+       A->ChangePointDeVie(PVieAventurier);
        //Armure perd 3/4*f de ses points de solidites
-
         double p = (f*3)/8;
-        aventurierCible->PerteDePointArmure(p);
+        A->PerteDePointArmure(p);
 
 }

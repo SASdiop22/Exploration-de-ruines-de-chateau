@@ -10,10 +10,12 @@ class game
 {
 public:
     game();
+    terrain terrainGame() const;
     void ajoute(std::unique_ptr<aventurier> A);
     void ajoute(std::unique_ptr<monstre> M);
-    void remplirTerrain(int l, int h);
-    void combat();
+    void ajoute(terrain T);
+    void remplirTerrain();
+    void combat(std::unique_ptr<aventurier>& A, std::unique_ptr<monstre>& M);
     void deplaceAventurier(std::unique_ptr<aventurier> & A);
 private:
     std::unique_ptr<aventurier> d_aventurier;

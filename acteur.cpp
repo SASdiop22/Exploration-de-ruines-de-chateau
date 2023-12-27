@@ -29,3 +29,7 @@ bool acteur::estMort() const
      return d_position;
 
  }
+ void acteur::changePosition(double x, double y)
+ {
+     d_position.deplaceEn(x,y);
+ }

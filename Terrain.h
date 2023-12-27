@@ -9,13 +9,12 @@ class terrain
 {
 
 public:
-    terrain(const std::vector<std::vector<char>>& tableau);
-    terrain(int largeur,int hauteur);
+    terrain(int largeur= 15,int hauteur= 15);
     int largeur() const;
     int hauteur() const;
     std::vector<std::vector<char>> tableau() const;
     void attribuerMurTerrain() ;
-    void initialiserActeur(aventurier& aventurier,std::vector<std::unique_ptr<monstre>>& monstres);
+    void initialiserActeur(std::unique_ptr<aventurier>& aventurier,std::vector<std::unique_ptr<monstre>>& monstres);
 
 private:
     std::vector<std::vector<char>>d_tableau;
