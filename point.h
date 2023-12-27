@@ -5,13 +5,13 @@ class transfoAffine;
 using namespace std;
 class point  {
 public:
-    point(double x, double y);
+    point(int x, int y);
     point(); ///Constructeur par defaut
-    double x() const;
-    double y() const;
+    int  x() const;
+    int  y() const;
     double distance(point &p);
-    void deplaceEn(double dx, double dy);
-    void deplaceDe(double dx, double dy);
+    void deplaceEn(int dx, int dy);
+    void deplaceDe(int dx, int dy);
 
 private:
     double d_x, d_y;
