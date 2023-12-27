@@ -4,14 +4,15 @@
 class deplacement
 {
 public:
-    deplaceRight(std::unique_ptr<acteur> A);
-    deplaceLeft(std::unique_ptr<acteur> A);
-    deplaceUp(std::unique_ptr<acteur> A);
-    deplaceDown(std::unique_ptr<acteur> A);
-    deplaceRightUp(std::unique_ptr<acteur> A);
-    deplaceRightDown(std::unique_ptr<acteur> A);
-    deplaceLeftUp(std::unique_ptr<acteur> A);
-    deplaceLeftDown(std::unique_ptr<acteur> A);
+    deplacement();
+     void deplaceRight(acteur* A);
+    void deplaceLeft(acteur* A);
+    void deplaceUp(acteur* A);
+    void deplaceDown(acteur* A);
+    void deplaceRightUp(acteur* A);
+    void deplaceRightDown(sacteur* A);
+    void deplaceLeftUp(acteur* A);
+    void deplaceLeftDown(acteur* A);
 
 };
 
