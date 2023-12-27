@@ -50,32 +50,39 @@ std::vector<std::vector<char>> terrain::tableau() const
 terrain::terrain(int largeur,int hauteur)
 {
     d_tableau.resize(hauteur);
-    for (int i = 0; i < hauteur; i++)
+    for(int i=0; i<d_tableau.size(); i++)
     {
+
         d_tableau[i].resize(largeur);
+
     }
 
 }
+//nombre de colonnes
 int terrain::largeur() const
 {
-    return d_tableau.size();
+return d_tableau[0].size();
+
+
 }
+//bombres de lignes
 int terrain::hauteur() const
 {
-    return d_tableau[0].size();
+    return d_tableau.size();
+
 
 }
 
 void terrain::attribuerMurTerrain()
 {
 
-    for (int i = 0; i < hauteur(); i++)
+    for (int i = 0; i < largeur(); i++)
     {
         d_tableau[0][i] = 'x';
-        d_tableau[largeur() - 1][i] = 'x';
+        d_tableau[hauteur() - 1][i] = 'x';
     }
 
-    for (int j = 0; j < hauteur(); j++)
+    for (int j = 0; j < largeur(); j++)
 
     {
         if(j != 1)
@@ -83,13 +90,13 @@ void terrain::attribuerMurTerrain()
             d_tableau[j][0] = 'x';
 
         }
-        if(j != hauteur()-2)
+        if(j != largeur()-2)
         {
-            d_tableau[j][hauteur() - 1] = 'x';
+            d_tableau[j][largeur() - 1] = 'x';
 
         }
     }
-    for(int i = 2; i< hauteur()-1; i+=2)
+    for(int i = 2; i< largeur()-1; i+=2)
 
     {
         std::vector<int>PoistionsOccupees;
@@ -105,7 +112,7 @@ void terrain::attribuerMurTerrain()
             if(isAmongValue(PoistionsOccupees,randomValue)== false)
             {
 
-                if((randomValue== largeur()-2 && i == hauteur()-2) )
+                if((randomValue== largeur()-2 && i == largeur()-2) )
                 {
                     d_tableau[randomValue][i] =  ' ';
                 }
@@ -131,29 +138,29 @@ void terrain::initialiserActeur(std::unique_ptr<aventurier>& aventurier,std::vec
     cout<<monstres.size()<<endl;;
 
     while (i < monstres.size())
-{
-    int randomValueLigne, randomValueColonne;
+    {
+        int randomValueLigne, randomValueColonne;
 
-    std::uniform_int_distribution<int> distrib1(2, largeur()-1);
-     randomValueLigne = distrib1(gen);
-    std::uniform_int_distribution<int> distrib2(2, hauteur()-1);
-     randomValueColonne = distrib2(gen);
+        std::uniform_int_distribution<int> distrib1(2, hauteur()-1);
+        randomValueLigne = distrib1(gen);
+        std::uniform_int_distribution<int> distrib2(2, largeur()-1);
+        randomValueColonne = distrib2(gen);
 //    randomValueLigne = (std::rand() % (largeur() - 2)) + 2;
 //    randomValueColonne = (std::rand() % (hauteur() - 2)) + 2;
-    cout << "in " << "rl " << randomValueLigne << "rc " << randomValueColonne << endl;
-    if (d_tableau[randomValueLigne][randomValueColonne] == '\0')
-    {
-        d_tableau[randomValueLigne][randomValueColonne] = monstres[i]->symbole();
-        monstres[i]->changePosition(randomValueLigne,randomValueColonne);
+        cout << "in " << "rl " << randomValueLigne << "rc " << randomValueColonne << endl;
+        if (d_tableau[randomValueLigne][randomValueColonne] == '\0')
+        {
+            d_tableau[randomValueLigne][randomValueColonne] = monstres[i]->symbole();
+            monstres[i]->changePosition(randomValueLigne,randomValueColonne);
 
-        i++;
+            i++;
+        }
+        cout<<"valeurs places"<<i<<endl;
+
+
+
+
     }
-    cout<<"valeurs places"<<i<<endl;
-
-
-
-
-}
 
 
 

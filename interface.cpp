@@ -1,19 +1,26 @@
 #include"interface.h"
 #include<iostream>
+#include <windows.h>
 #include "game.h"
 using std::cout;
 using std::endl;
 
-//
-//void gotoxy(int x, int y){
-//	CursorPosition.X = x;
-//	CursorPosition.Y = y;
-//	SetConsoleCursorPosition(console, CursorPosition);
-//}
+
+
+
+void gotoxy(int x, int y)
+{
+  HANDLE handle;
+  COORD coordinates;
+  handle = GetStdHandle(STD_OUTPUT_HANDLE);
+  coordinates.X = x;
+  coordinates.Y = y;
+  SetConsoleCursorPosition(handle, coordinates);
+}
 
  void interfaceConsole::afficheTerrain() const{
      /** Creation du jeu(Game):
-        * Creer le terrain par defaut 15x20
+        * Creer le terrain par defaut 15x15
         *Creer les monstres et l'ajouter à Game
         *Creer de l'aventurier et l'ajouter à Game
         *Remplir le terrain
@@ -33,16 +40,16 @@ using std::endl;
 
     terrain  TGame= G.terrainGame();
 
-    for (int i = 0; i < TGame.hauteur(); i++)
+    for (int i = 0; i < TGame.largeur(); i++)
     {
 
         cout << "+-----";
 
     }
     cout << '+' << endl;
-    for (int i = 0; i < TGame.largeur(); i++)
+    for (int i = 0; i < TGame.hauteur(); i++)
     {
-        for (int j = 0; j < TGame.hauteur(); j++)
+        for (int j = 0; j < TGame.largeur(); j++)
         {
 
 
@@ -71,7 +78,7 @@ using std::endl;
         }
 
 
-        if (i != TGame.largeur() - 2)
+        if (i != TGame.hauteur() - 2)
         {
             cout << '|' << endl;
         }
@@ -81,7 +88,7 @@ using std::endl;
         }
 
 
-        for (int j = 0; j < TGame.hauteur(); j++)
+        for (int j = 0; j < TGame.largeur(); j++)
         {
             cout << "+-----";
         }
@@ -93,13 +100,13 @@ using std::endl;
 
    void interfaceConsole::MenuPrincipal()
    {
-//       gotoxy(10,5);cout<<"----------------------------------------------"<<endl;
-//       gotoxy(10,6)cout<<"|      EXPLORATION  DE RUINES DE CHATEAU      |"<<endl;
-//       gotoxy(10,5)cout<<"----------------------------------------------"<<endl;
-//       gotoxy(10,5)cout<<"1. DEMARRER LE JEU "<<endl;
-//      gotoxy(10,5) cout<<" 2. TUTORIEL        "<<endl;
-//       gotoxy(10,5)cout<<" 3. TUTORIEL        "<<endl;
-//       cout<<" 4. QUITTER LE JEU        "<<endl;
+       gotoxy(10,5);cout<<"----------------------------------------------"<<endl;
+       gotoxy(10,6);cout<<"|      EXPLORATION  DE RUINES DE CHATEAU      |"<<endl;
+       gotoxy(10,7);cout<<"----------------------------------------------"<<endl;
+       gotoxy(10,8);cout<<"1. DEMARRER LE JEU "<<endl;
+      gotoxy(10,9); cout<<" 2. TUTORIEL        "<<endl;
+      gotoxy(10,10); cout<<" 3. TUTORIEL        "<<endl;
+       cout<<" 4. QUITTER LE JEU        "<<endl;
 
 
 
