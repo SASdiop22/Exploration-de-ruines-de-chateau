@@ -10,7 +10,7 @@ public:
     void deplaceUp(acteur* A);
     void deplaceDown(acteur* A);
     void deplaceRightUp(acteur* A);
-    void deplaceRightDown(sacteur* A);
+    void deplaceRightDown(acteur* A);
     void deplaceLeftUp(acteur* A);
     void deplaceLeftDown(acteur* A);
 
