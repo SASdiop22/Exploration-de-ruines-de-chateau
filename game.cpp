@@ -45,10 +45,10 @@ void game::remplirTerrain()
     d_terrain.initialiserActeur(d_aventurier,d_monstres);
 }
 
-void game::deplaceMonstreAveugle(std::unique_ptr<acteur> & M,deplacement& d)
+void game::deplaceMonstreAveugle(std::unique_ptr<acteur> & M)
 {
-    if  (M->estMort() == false)
-    {
+    deplacement d{};
+
         bool moveRight = false;
         bool moveLeft = false;
         bool moveUp=false;
@@ -185,7 +185,7 @@ void game::deplaceMonstreAveugle(std::unique_ptr<acteur> & M,deplacement& d)
 
             }
 
-    }
+
 
 
 

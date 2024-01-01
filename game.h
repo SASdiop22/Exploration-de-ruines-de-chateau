@@ -18,7 +18,7 @@ public:
     void remplirTerrain();
     void combat(std::unique_ptr<aventurier>& A, std::unique_ptr<monstre>& M);
     void deplaceAventurier(std::unique_ptr<aventurier> & A);
-    void deplaceMonstreAveugle(std::unique_ptr<acteur> & M, deplacement& d);
+    void deplaceMonstreAveugle(std::unique_ptr<acteur> & M);
 private:
     std::unique_ptr<aventurier> d_aventurier;
     std::vector<std::unique_ptr<monstre>> d_monstres;
