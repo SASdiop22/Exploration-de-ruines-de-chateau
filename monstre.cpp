@@ -1,6 +1,7 @@
 #include "monstre.h"
 #include "aventurier.h"
-
+#include <chrono>  // Pour utiliser std::chrono
+#include <thread>
 
 monstre::monstre(double pointVie,double pointForce,point position, double habilite ): acteur{pointVie, pointForce, position},
  d_habilite{habilite}
@@ -21,7 +22,15 @@ double  monstre::ForceDAttaque() const
 
 char monstre::symbole() const
 {
-      return 'M';
+    const monstreAveugle* aveugle = dynamic_cast<const monstreAveugle*>(this);
+        if (aveugle) {
+            return 'A';
+        }
+
+        const monstreVoyant* voyant = dynamic_cast<const monstreVoyant*>(this);
+        if (voyant) {
+            return 'V';
+        }
 }
 
 

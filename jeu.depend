@@ -1,0 +1,112 @@
+# depslib dependency file v1.0
+1703700405 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\acteur.cpp
+	"acteur.h"
+	<random>
+
+1703699526 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\acteur.h
+	<iostream>
+	<ostream>
+	"armes.h"
+	"point.h"
+	<memory>
+	"armes.h"
+
+1703675369 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\armes.h
+
+1703675369 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\point.h
+	<iostream>
+
+1703675369 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\amulette.cpp
+	"amulette.h"
+	"point.h"
+
+1703675369 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\amulette.h
+	<iostream>
+	"point.h"
+
+1703675369 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\armes.cpp
+	"armes.h"
+
+1703675369 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\aventurier.cpp
+	"aventurier.h"
+
+1703675369 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\aventurier.h
+	"acteur.h"
+	"monstre.h"
+	<memory>
+
+1704010530 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\monstre.h
+	"point.h"
+	"acteur.h"
+	"deplacement.h"
+	"aventurier.h"
+	<memory>
+
+1704105812 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\game.cpp
+	"game.h"
+	<vector>
+	"iostream"
+	<memory>
+
+1704115557 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\game.h
+	<memory>
+	<vector>
+	"acteur.h"
+	"monstre.h"
+	"aventurier.h"
+	"deplacement.h"
+	"Terrain.h"
+
+1704011596 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\terrain.h
+	<vector>
+	"aventurier.h"
+	"monstre.h"
+	<memory>
+
+1703707521 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\interface.cpp
+	"interface.h"
+	<iostream>
+	"windows.h"
+	"game.h"
+
+1703675369 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\interface.h
+	"Terrain.h"
+	"aventurier.h"
+	"monstre.h"
+	"deplacement.h"
+
+1703833297 c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\deplacement.h
+	"acteur.h"
+	<memory>
+
+1704011736 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\main.cpp
+	<iostream>
+	"Terrain.h"
+	<memory>
+	"interface.h"
+
+1704010530 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\monstre.cpp
+	"monstre.h"
+	"aventurier.h"
+	<chrono>
+	<thread>
+
+1703675369 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\point.cpp
+	"point.h"
+	<string>
+	<math.h>
+
+1704105961 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\terrain.cpp
+	"Terrain.h"
+	"monstre.h"
+	<ctime>
+	<cstdlib>
+	<iostream>
+	<random>
+	<chrono>
+
+1704011720 source:c:\users\dell\documents\projet2\exploration-de-ruines-de-chateau\deplacement.cpp
+	"deplacement.h"
+	"acteur.h"
+	<memory>
+

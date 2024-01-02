@@ -2,6 +2,7 @@
 #define MONSTRE_H_INCLUDED
 #include "point.h"
 #include "acteur.h"
+#include "deplacement.h"
 #include "aventurier.h"
 #include <memory>
 class aventurier;
@@ -12,7 +13,8 @@ public:
     double habilite() const ;
     double  ForceDAttaque() const override;
     void  attaque(std::unique_ptr<aventurier>& A);
-    char symbole() const override;
+    /** j'ai  changer le symbole entre les deux monstres */
+     char symbole() const override;
 private:
     double d_habilite;
 
@@ -21,13 +23,13 @@ private:
 class monstreVoyant:public monstre
 {
     public:
- //    void SeDeplace() override;
+
 
 };
 class monstreAveugle: public monstre
 {
     public:
-   // void SeDeplace() override;
+
 };
 
 

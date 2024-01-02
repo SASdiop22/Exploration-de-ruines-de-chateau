@@ -15,6 +15,8 @@ public:
     std::vector<std::vector<char>> tableau() const;
     void attribuerMurTerrain() ;
     void initialiserActeur(std::unique_ptr<aventurier>& aventurier,std::vector<std::unique_ptr<monstre>>& monstres);
+  /** j'ai ajoute celle la*/
+   bool estCaseAccessible(int ligne, int colonne) const;
 
 private:
     std::vector<std::vector<char>>d_tableau;

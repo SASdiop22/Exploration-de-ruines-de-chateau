@@ -33,3 +33,8 @@ bool acteur::estMort() const
  {
      d_position.deplaceEn(x,y);
  }
+/** j'ai ajouter ca   */
+void acteur::AffichePosition() const
+{    point p = position();
+    std::cout<< "(" << p.x()<< ","<< p.y()<<")";
+}

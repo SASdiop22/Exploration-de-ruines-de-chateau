@@ -16,9 +16,8 @@ class interfaceConsole : public interface
 {
     public:
     void afficheTerrain() const override ;
- // void MenuDeplaceAventurier(string choix, deplacement d);
    void MenuPrincipal();
-   // deplacement d;
+
 
 
 };
