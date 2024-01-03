@@ -3,6 +3,7 @@
 #include<vector>
 #include"aventurier.h"
 #include"monstre.h"
+#include"amulette.h"
 class terrain
 {
 
@@ -14,6 +15,7 @@ public:
     std::vector<std::vector<char>> tableau() const;
     void attribuerMurTerrain() ;
     void initialiserActeur(aventurier& aventurier,std::vector<std::unique_ptr<monstre>>& monstres);
+    void genererPositionAmulette(amulette& amulette);
 
 
 private:
