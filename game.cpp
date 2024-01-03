@@ -58,48 +58,58 @@ void game::deplaceAventurier(int choix)
             && d_terrain.tableau()[d_aventurier->position().x()+1][d_aventurier->position().y()] != '#')
 
             d.deplaceRight(d_aventurier);
+            d_terrain.tableau()[d_aventurier->position().x()+1][d_aventurier->position().y()]= d_aventurier->symbole();
         break;
     case 2 ://se deplacer à gauche
         if( d_terrain.tableau()[d_aventurier->position().x()-1][d_aventurier->position().y()] != 'x'
             && d_terrain.tableau()[d_aventurier->position().x()-1][d_aventurier->position().y()] != '#')
 
             d.deplaceLeft(d_aventurier);
+            d_terrain.tableau()[d_aventurier->position().x()-1][d_aventurier->position().y()]= d_aventurier->symbole();
         break;
     case 3 ://se deplacer en haut
          if( d_terrain.tableau()[d_aventurier->position().x()][d_aventurier->position().y()-1] != 'x'
             && d_terrain.tableau()[d_aventurier->position().x()][d_aventurier->position().y()-1] != '#')
 
             d.deplaceUp(d_aventurier);
+            d_terrain.tableau()[d_aventurier->position().x()][d_aventurier->position().y()-1]= d_aventurier->symbole();
          break;
     case 4 :// se deplacer en bas
         if( d_terrain.tableau()[d_aventurier->position().x()][d_aventurier->position().y()+1] != 'x'
             && d_terrain.tableau()[d_aventurier->position().x()][d_aventurier->position().y()+1] != '#')
 
             d.deplaceDown(d_aventurier);
+            d_terrain.tableau()[d_aventurier->position().x()][d_aventurier->position().y()+1]= d_aventurier->symbole();
         break;
     case 5 : //se deplacer en haut vers la gauche 'lu'
         if( d_terrain.tableau()[d_aventurier->position().x()-1][d_aventurier->position().y()-1] != 'x'
             && d_terrain.tableau()[d_aventurier->position().x()-1][d_aventurier->position().y()-1] != '#')
 
             d.deplaceLeftUp(d_aventurier);
+            d_terrain.tableau()[d_aventurier->position().x()-1][d_aventurier->position().y()-1]= d_aventurier->symbole();
+
         break;
     case 6 ://se deplacer en haut vers la droite 'ru'
         if( d_terrain.tableau()[d_aventurier->position().x()+1][d_aventurier->position().y()-1] != 'x'
             && d_terrain.tableau()[d_aventurier->position().x()+1][d_aventurier->position().y()-1] != '#')
 
             d.deplaceRightUp(d_aventurier);
+            d_terrain.tableau()[d_aventurier->position().x()+1][d_aventurier->position().y()-1] = d_aventurier->symbole();
+
         break;
     case 7 ://se deplacer en bas vers la gauche 'ld'
           if( d_terrain.tableau()[d_aventurier->position().x()-1][d_aventurier->position().y()+1] != 'x'
             && d_terrain.tableau()[d_aventurier->position().x()-1][d_aventurier->position().y()+1] != '#')
 
             d.deplaceLeftDown(d_aventurier);
+            d_terrain.tableau()[d_aventurier->position().x()-1][d_aventurier->position().y()+1]= d_aventurier->symbole();
          break;
     case 8 :// se daplacer en bas vers la droite 'rd'
         if( d_terrain.tableau()[d_aventurier->position().x()+1][d_aventurier->position().y()+1] != 'x'
           && d_terrain.tableau()[d_aventurier->position().x()+1][d_aventurier->position().y()+1] != '#')
 
             d.deplaceRightDown(d_aventurier);
+            d_terrain.tableau()[d_aventurier->position().x()+1][d_aventurier->position().y()+1]= d_aventurier->symbole();
          break;
     }
 

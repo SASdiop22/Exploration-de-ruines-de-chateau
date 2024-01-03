@@ -1,17 +1,11 @@
 #include "Terrain.h"
 #include"monstre.h"
+#include"amulette.h"
 #include<ctime>
 #include<cstdlib>
 #include<iostream>
-#include <random>
-#include <chrono>
-
 using std::cout;
 using std::endl;
-//std::random_device rd;
-unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-//std::mt19937 gen(rd());
-std::default_random_engine gen(seed);
 
 
 bool isAmongValue(std::vector<int>setOfRandomValue, int randomValue)
@@ -42,47 +36,45 @@ bool isAmongValue(const std::vector<std::pair<int, int>>& occupiedPositions, int
     }
     return false;
 }
+terrain::terrain():d_tableau{}
+{
 
+}
 std::vector<std::vector<char>> terrain::tableau() const
 {
     return d_tableau;
+
 }
 terrain::terrain(int largeur,int hauteur)
 {
     d_tableau.resize(hauteur);
-    for(int i=0; i<d_tableau.size(); i++)
+    for (int i = 0; i < hauteur; i++)
     {
-
         d_tableau[i].resize(largeur);
 
     }
 
 }
-//nombre de colonnes
 int terrain::largeur() const
 {
-return d_tableau[0].size();
-
-
+    return d_tableau.size();
 }
-//bombres de lignes
 int terrain::hauteur() const
 {
-    return d_tableau.size();
-
+    return d_tableau[0].size();
 
 }
 
 void terrain::attribuerMurTerrain()
 {
 
-    for (int i = 0; i < largeur(); i++)
+    for (int i = 0; i < hauteur(); i++)
     {
         d_tableau[0][i] = 'x';
-        d_tableau[hauteur() - 1][i] = 'x';
+        d_tableau[largeur() - 1][i] = 'x';
     }
 
-    for (int j = 0; j < largeur(); j++)
+    for (int j = 0; j < hauteur(); j++)
 
     {
         if(j != 1)
@@ -90,13 +82,13 @@ void terrain::attribuerMurTerrain()
             d_tableau[j][0] = 'x';
 
         }
-        if(j != largeur()-2)
+        if(j != hauteur()-2)
         {
-            d_tableau[j][largeur() - 1] = 'x';
+            d_tableau[j][hauteur() - 1] = 'x';
 
         }
     }
-    for(int i = 2; i< largeur()-1; i+=2)
+    for(int i = 2; i< hauteur()-1; i+=2)
 
     {
         std::vector<int>PoistionsOccupees;
@@ -105,14 +97,12 @@ void terrain::attribuerMurTerrain()
 
         while( PoistionsOccupees.size()!= (caseInacessible+1))
         {
-            std::uniform_int_distribution<int> distrib(1, hauteur()-2);
-            int randomValue = distrib(gen);
-            //int  randomValue= (std::rand() % (hauteur() - 2)) + 1;
+            int randomValue = (std::rand() % (hauteur() - 2)) + 1;
 
             if(isAmongValue(PoistionsOccupees,randomValue)== false)
             {
 
-                if((randomValue== largeur()-2 && i == largeur()-2) )
+                if(randomValue== largeur()-2 && i == hauteur()-2)
                 {
                     d_tableau[randomValue][i] =  ' ';
                 }
@@ -129,43 +119,53 @@ void terrain::attribuerMurTerrain()
 
     }
 
+
 }
-void terrain::initialiserActeur(std::unique_ptr<aventurier>& aventurier,std::vector<std::unique_ptr<monstre>>& monstres)
+void terrain::initialiserActeur(aventurier& aventurier,std::vector<std::unique_ptr<monstre>>& monstres)
 {
+    d_tableau[aventurier.position().x()][aventurier.position().y()] = aventurier.symbole();
+   // std::vector<std::pair<int, int>> posOccupees;
 
-    d_tableau[aventurier->position().x()][aventurier->position().y()] = aventurier->symbole();
-    int i = 0;
-    cout<<monstres.size()<<endl;;
+    int monstersPlaced = 0;
 
-    while (i < monstres.size())
+    while (monstersPlaced < monstres.size())
+{
+    int randomValueLigne, randomValueColonne;
+
+    do
     {
-        int randomValueLigne, randomValueColonne;
-
-        std::uniform_int_distribution<int> distrib1(2, hauteur()-1);
-        randomValueLigne = distrib1(gen);
-        std::uniform_int_distribution<int> distrib2(2, largeur()-1);
-        randomValueColonne = distrib2(gen);
-//    randomValueLigne = (std::rand() % (largeur() - 2)) + 2;
-//    randomValueColonne = (std::rand() % (hauteur() - 2)) + 2;
+        randomValueLigne = (std::rand() % (largeur() - 2)) + 2;
+        randomValueColonne = (std::rand() % (hauteur() - 2)) + 2;
         cout << "in " << "rl " << randomValueLigne << "rc " << randomValueColonne << endl;
-        if (d_tableau[randomValueLigne][randomValueColonne] == '\0')
-        {
-            d_tableau[randomValueLigne][randomValueColonne] = monstres[i]->symbole();
-            monstres[i]->changePosition(randomValueLigne,randomValueColonne);
-
-            i++;
-        }
-        cout<<"valeurs places"<<i<<endl;
-
-
-
-
     }
+    while (d_tableau[randomValueLigne][randomValueColonne] == '#' ||
+           d_tableau[randomValueLigne][randomValueColonne] == 'M' ||
+           d_tableau[randomValueLigne][randomValueColonne] == 'x' );
 
+    d_tableau[randomValueLigne][randomValueColonne] = monstres[monstersPlaced]->symbole();
+   // posOccupees.emplace_back(randomValueLigne, randomValueColonne);
+    monstersPlaced++;
+    cout << "Hors " << "rl " << randomValueLigne << "rc " << randomValueColonne << endl;
+}
 
 
 
 }
+
+ void terrain::genererPositionAmulette(amulette& amulette){
+     int valeurLigne,valeurColonne;
+    do
+    {
+        valeurLigne = (std::rand() % (largeur() - 2)) + 2;
+        valeurColonne = (std::rand() % (hauteur() - 2)) + 2;
+    }
+    while (d_tableau[valeurLigne][valeurColonne] == '#' ||
+           d_tableau[valeurLigne][valeurColonne] == 'M' ||
+           d_tableau[valeurLigne][valeurColonne] == 'x' );
+    d_tableau[valeurLigne][valeurColonne] =amulette.symbole();
+
+
+ }
 
 
 
