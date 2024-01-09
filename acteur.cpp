@@ -6,10 +6,6 @@ double acteur::pointDevie()const
 {
     return d_pvie;
 }
-point acteur::position() const
-{
-    return d_position;
-}
 void acteur::ChangePointDeVie(double pVie)
 {
     d_pvie= pVie;
@@ -25,5 +21,15 @@ double acteur::pointDeforce()const
 
 bool acteur::estMort() const
 {
-    return d_pvie==0.0 ;
+    return d_pvie<=0 ;
 }
+
+ point acteur::position() const
+ {
+     return d_position;
+
+ }
+ void acteur::changePosition(double x, double y)
+ {
+     d_position.deplaceEn(x,y);
+ }

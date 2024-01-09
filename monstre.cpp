@@ -19,24 +19,28 @@ double  monstre::ForceDAttaque() const
 }
 
 
-char monstre::symbole() const
+char monstreVoyant::symbole() const
 {
       return 'M';
+}
+char monstreAveugle::symbole() const
+{
+      return 'm';
 }
 
 
 
-void monstre:: attaque(aventurier& A)
+void monstre:: attaque(std::unique_ptr<aventurier>& A)
 {
     double f{ monstre::ForceDAttaque()};
    //aventurier perd (1/4)*f de ses points de vie
-    //aventurier* aventurierCible = static_cast<aventurier*>(&act);
-    double PVieAventurier= A.pointDevie();
-    PVieAventurier-= f/4;
-    A.ChangePointDeVie(PVieAventurier);
-    //Armure perd 3/4*f de ses points de solidites
-
-    double p = (f*3)/8;
-    A.PerteDePointArmure(p);
+   // aventurier* aventurierCible = static_cast<aventurier*>(&act);
+    monstre::ChangePointDeForce(pointDeforce()-f);
+      double PVieAventurier= A->pointDevie();
+       PVieAventurier-= f/4;
+       A->ChangePointDeVie(PVieAventurier);
+       //Armure perd 3/4*f de ses points de solidites
+        double p = (f*3)/8;
+        A->PerteDePointArmure(p);
 
 }
